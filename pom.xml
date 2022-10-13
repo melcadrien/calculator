@@ -4,4 +4,30 @@
   <artifactId>calculator</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <name>github.melcadrien.maven.classes</name>
+<properties>
+	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	<maven.compiler.release>13</maven.compiler.release>
+</properties>
+	
+<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
+<dependencies>
+	<dependency>
+    	<groupId>org.apache.commons</groupId>
+    	<artifactId>commons-lang3</artifactId>
+    	<version>3.12.0</version>
+	</dependency>
+</dependencies>
+	
+<build>
+	<pluginManagement>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.8.1</version>
+			</plugin>
+		</plugins>
+	</pluginManagement>
+</build>
+
 </project>
