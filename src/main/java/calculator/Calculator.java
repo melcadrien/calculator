@@ -4,11 +4,13 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.apache.commons.lang3.Validate;
+
 public class Calculator {
 
-	private static final String FORMAT_REGULAR_EPRESSION = "[0-9]*([\\+|\\-|\\/|\\*])[0-9]*";
+	private static final String FORMAT_REGULAR_EXPRESSION = "[0-9]*([\\+|\\-|\\/|\\*])[0-9]*";
 	//TODO: Replace one function with one in the Maven Repo.
-	
+
 	public static enum Operator{
 		PLUS('+'), MINUS('-'), MULTIPLY('*'), DIVIDE('/');
 
@@ -34,15 +36,6 @@ public class Calculator {
 		userInput.close();
 	}
 
-	//Format: Number[+-/*]Number without spaces in between.
-	private static boolean validate(String input) {
-		Pattern pattern = Pattern.compile(FORMAT_REGULAR_EPRESSION);
-		Matcher matcher = pattern.matcher(input);
-		boolean formatFound = matcher.matches();
-
-		return(formatFound);
-	}
-
 	private static int calculate(int leftValue, int rightValue, Operator operator) {
 		switch(operator){
 		case PLUS:
@@ -59,23 +52,27 @@ public class Calculator {
 
 	public static int preCalculate(String input) {
 		int operatorLocation = -1;
-
+		//Initialize values.
+		int leftValue = 0;
+		int rightValue = 0;
+		Operator operatorChosen = Operator.PLUS;
+		
 		//Remove whitespace before validating.
 		input = input.trim();
 
 		//Validate, find the location of the operator, then calculate values.
-		if(validate(input)) {
-			for(Operator operator : Operator.values()) {
-				operatorLocation = input.indexOf(operator.getOperator());
-				if(operatorLocation != -1) {
-					int leftValue = Integer.parseInt(input.substring(0,operatorLocation));
-					int rightValue = Integer.parseInt(input.substring(operatorLocation+1));
-					return calculate(leftValue,rightValue,operator);
-				}
+		//Validate function will throw IllegalArgumentException if it fails.
+		Validate.matchesPattern(input, FORMAT_REGULAR_EXPRESSION);
+		for(Operator operator : Operator.values()) {
+			operatorLocation = input.indexOf(operator.getOperator());
+			if(operatorLocation != -1) {
+				leftValue = Integer.parseInt(input.substring(0,operatorLocation));
+				rightValue = Integer.parseInt(input.substring(operatorLocation+1));
+				operatorChosen = operator;
 			}
 		}
-		//When validation fails.
-		throw new IllegalArgumentException("Incorrect format(Must be number{+|-|*|/}number without spaces in between).");
+		
+		return calculate(leftValue,rightValue,operatorChosen);
 	}
 
 
