@@ -6,7 +6,7 @@
   <name>github.melcadrien.maven.classes</name>
 <properties>
 	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-	<maven.compiler.release>13</maven.compiler.release>
+	<java.version>11</java.version>
 </properties>
 	
 <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
@@ -15,6 +15,13 @@
     	<groupId>org.apache.commons</groupId>
     	<artifactId>commons-lang3</artifactId>
     	<version>3.12.0</version>
+	</dependency>
+	
+	<dependency>
+		<groupId>junit</groupId>
+	    <artifactId>junit</artifactId>
+	    <version>4.12</version>
+	    <scope>test</scope>
 	</dependency>
 </dependencies>
 	
