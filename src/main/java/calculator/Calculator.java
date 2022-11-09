@@ -6,7 +6,7 @@ import org.apache.commons.lang3.Validate;
 
 public class Calculator {
 
-	private static final String FORMAT_REGULAR_EXPRESSION = "[0-9]*([\\+|\\-|\\/|\\*])[0-9]*";
+	private static final String FORMAT_REGULAR_EXPRESSION = "[0-9]*([\\+\\-\\/\\*]))*[0-9]*";
 	//TODO: Replace one function with one in the Maven Repo.
 
 	public static enum Operator{

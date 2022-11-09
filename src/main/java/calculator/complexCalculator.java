@@ -7,14 +7,13 @@ import org.apache.commons.lang3.Validate;
 public class complexCalculator {
 
 	//private static final String FORMAT_REGULAR_EXPRESSION = "[0-9]*([\\+|\\-|\\/|\\*])[0-9]*";
-	private static final String FORMAT_REGULAR_EXPRESSION = "([0-9]*([\\+|\\-|\\/|\\*]))*[0-9]*";
-	//TODO: Take in a longer string of numbers and operators.
-	//Primary change: Regex needs to accept more or be designed to handle less.
-	//2 Possible ways:
-	//1: Branching out by operators.
-	//2: Search and re-Search.
-	//Let's go by how it is put in.  If it's 2+2*2, then it should be(2+2)*2.
-	//And 2+2+2+2 is ((2+2)+2)+2.
+	private static final String FORMAT_REGULAR_EXPRESSION = "[0-9]*([\\+\\-\\/\\*]))*[0-9]*";
+	//TODO: Order of operations: PEMDAS
+	//Rough idea is to go through the operator array, find either multiply or divide and run those.
+	//Then Add/subtract
+	//Will have to do parentheses in the next part.
+	//After that, floating point.
+	//First, wait for the junit from brother.  If it comes.
 
 	public static enum Operator{
 		PLUS('+'), MINUS('-'), MULTIPLY('*'), DIVIDE('/');
@@ -71,6 +70,7 @@ public class complexCalculator {
 	
 	private static Operator[] createOperators(String input) {
 		//Creates an initial whitespace, which has to be removed.
+		//Maybe some sort of array that has a queue?
 		String[] initialOperators = input.split("\\d+");
 		String[] OperatorString = new String[initialOperators.length-1];
 		System.arraycopy(initialOperators, 1, OperatorString, 0, OperatorString.length);
