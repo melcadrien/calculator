@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 import org.apache.commons.lang3.Validate;
 
-public class complexCalculator {
+public class ComplexCalculator {
 
 	//private static final String FORMAT_REGULAR_EXPRESSION = "[0-9]*([\\+|\\-|\\/|\\*])[0-9]*";
 //	private static final String FORMAT_REGULAR_EXPRESSION = "([0-9])*\\s*[\\+\\-\\/\\*]*\\s*([0-9])*";
