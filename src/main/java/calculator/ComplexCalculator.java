@@ -15,7 +15,7 @@ public class ComplexCalculator {
 	//Then Add/subtract
 	//Will have to do parentheses in the next part.
 	//After that, floating point.
-	//First, wait for the junit from brother.  If it comes.
+	//TODO: create unit tests.
 
 	/*
 	 * In Steps:
