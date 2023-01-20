@@ -193,4 +193,64 @@ public class ComplexCalculatorTest {
 	    assertEquals(21, result);
 	  }
   
+  @Test
+  public void preCalculate_Single_ExponentOperation() {
+	    // Arrange
+	    String input = "2^2";
+	    
+	    // Act
+	    int result = ComplexCalculator.preCalculate(input);
+	    
+	    // Assert
+	    assertEquals(4, result);
+	  }
+  
+  @Test
+  public void preCalculate_Single_ExponentOperation_ZeroExponent() {
+	    // Arrange
+	    String input = "2^0";
+	    
+	    // Act
+	    int result = ComplexCalculator.preCalculate(input);
+	    
+	    // Assert
+	    assertEquals(1, result);
+	  }
+  
+  @Test
+  public void preCalculate_Nested_ExponentOperation() {
+	    // Arrange
+	    String input = "2^2^2";
+	    
+	    // Act
+	    int result = ComplexCalculator.preCalculate(input);
+	    
+	    // Assert
+	    assertEquals(16, result);
+	  }
+  
+  @Test
+  public void preCalculate_MoreNested_ExponentOperation() {
+	    // Arrange
+	    String input = "2^2^2^2";
+	    
+	    // Act
+	    int result = ComplexCalculator.preCalculate(input);
+	    
+	    // Assert
+	    assertEquals(256, result);
+	  }
+  
+  @Test
+  public void preCalculate_MoreNestedTwo_ExponentOperation() {
+	    // Arrange
+	    String input = "2^2^2^2^2";
+	    
+	    // Act
+	    int result = ComplexCalculator.preCalculate(input);
+	    
+	    // Assert
+	    assertEquals(65_536, result);
+	  }
+  
 }
