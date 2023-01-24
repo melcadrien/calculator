@@ -73,56 +73,6 @@ public class ComplexCalculator {
 		return totalValue;
 	}
 
-	//	private static int calculateByOperationOrder(ArrayList<Integer> values, ArrayList<Operator> operators) {
-	//		int totalValue = Integer.parseInt(values[0]);
-	//
-	//		ArrayList<Integer> newValues = new ArrayList<Integer>();
-	//		ArrayList<Operator> newOperators = new ArrayList<Operator>();
-	//
-	//		//For Multiply and Divide
-	//		//Results are added into ArrayList to make it easier to add in values to be used for addition/subtraction
-	//		for(int pos = 1; pos < values.length; pos++) {
-	//			while(operators[pos-1] != Operator.PLUS && operators[pos-1] != Operator.MINUS) {
-	//				switch(operators[pos-1]){
-	//				case MULTIPLY:
-	//					totalValue *= Integer.parseInt(values[pos]);
-	//					break;
-	//				case DIVIDE:
-	//					totalValue /= Integer.parseInt(values[pos]);
-	//					break;
-	//				}
-	//				pos++;
-	//				if(pos == values.length)
-	//					break;
-	//			}
-	//			newValues.add(totalValue);
-	//			if(pos != values.length) {
-	//				newOperators.add(operators[pos-1]);
-	//				totalValue = Integer.parseInt(values[pos]);
-	//			}
-	//			if(pos == values.length-1 && (operators[pos-1] == Operator.PLUS || operators[pos-1] == Operator.MINUS)){
-	//				newValues.add(totalValue);
-	//			}
-	//		}
-	//
-	//		//For Addition and Subtraction
-	//		if(newValues.size() != 1) {
-	//			totalValue = newValues.get(0);
-	//			for(int pos = 1; pos < newValues.size(); pos++) {
-	//				switch(newOperators.get(pos-1)){
-	//				case PLUS:
-	//					totalValue += newValues.get(pos);
-	//					break;
-	//				case MINUS:
-	//					totalValue -= newValues.get(pos);
-	//					break;
-	//				}
-	//			}
-	//
-	//		}
-	//		return totalValue;
-	//	}
-
 	private static int calculateByOperationOrder(ArrayList<Integer> values, ArrayList<Operator> operators) {
 		int totalValue = values.get(0);
 		//NOTES: Okay, so I need to do some fixing in the exponent method.  For some reason it's eating one of the numbers.
