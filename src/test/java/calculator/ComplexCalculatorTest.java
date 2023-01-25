@@ -11,7 +11,7 @@ public class ComplexCalculatorTest {
     String input = "12|2";
     
     // Act
-    int result = ComplexCalculator.preCalculate(input);
+    double result = ComplexCalculator.preCalculate(input);
     
     // Assert
   }
@@ -22,7 +22,7 @@ public class ComplexCalculatorTest {
     String input = "12 + 2y";
     
     // Act
-    int result = ComplexCalculator.preCalculate(input);
+    double result = ComplexCalculator.preCalculate(input);
     
     // Assert
   }
@@ -33,7 +33,7 @@ public class ComplexCalculatorTest {
     String input = ")12 + 2(";
     
     // Act
-    int result = ComplexCalculator.preCalculate(input);
+    double result = ComplexCalculator.preCalculate(input);
     
     // Assert
   }
@@ -44,7 +44,7 @@ public class ComplexCalculatorTest {
     String input = "(12 + 2";
     
     // Act
-    int result = ComplexCalculator.preCalculate(input);
+    double result = ComplexCalculator.preCalculate(input);
     
     // Assert
   }
@@ -55,7 +55,7 @@ public class ComplexCalculatorTest {
     String input = "12 + 2)";
     
     // Act
-    int result = ComplexCalculator.preCalculate(input);
+    double result = ComplexCalculator.preCalculate(input);
     
     // Assert
   }
@@ -66,10 +66,10 @@ public class ComplexCalculatorTest {
     String input = "12 + 2";
     
     // Act
-    int result = ComplexCalculator.preCalculate(input);
+    double result = ComplexCalculator.preCalculate(input);
     
     // Assert
-    assertEquals(14, result);
+    assertEquals(14, result, 0.0);
   }
 
 
@@ -79,10 +79,10 @@ public class ComplexCalculatorTest {
     String input = "12*2";
     
     // Act
-    int result = ComplexCalculator.preCalculate(input);
+    double result = ComplexCalculator.preCalculate(input);
     
     // Assert
-    assertEquals(24, result);
+    assertEquals(24, result, 0.0);
   }
 
   @Test
@@ -91,10 +91,10 @@ public class ComplexCalculatorTest {
     String input = "12*2*3";
     
     // Act
-    int result = ComplexCalculator.preCalculate(input);
+    double result = ComplexCalculator.preCalculate(input);
     
     // Assert
-    assertEquals(72, result);
+    assertEquals(72, result, 0.0);
   }
 
   @Test
@@ -103,10 +103,10 @@ public class ComplexCalculatorTest {
     String input = "12*2+3";
     
     // Act
-    int result = ComplexCalculator.preCalculate(input);
+    double result = ComplexCalculator.preCalculate(input);
     
     // Assert
-    assertEquals(27, result);
+    assertEquals(27, result, 0.0);
   }
 
   @Test
@@ -115,10 +115,10 @@ public class ComplexCalculatorTest {
     String input = "3+2*12";
     
     // Act
-    int result = ComplexCalculator.preCalculate(input);
+    double result = ComplexCalculator.preCalculate(input);
     
     // Assert
-    assertEquals(27, result);
+    assertEquals(27, result, 0.0);
   }
 
   @Test
@@ -127,10 +127,10 @@ public class ComplexCalculatorTest {
     String input = "(3+2)*12";
     
     // Act
-    int result = ComplexCalculator.preCalculate(input);
+    double result = ComplexCalculator.preCalculate(input);
     
     // Assert
-    assertEquals(60, result);
+    assertEquals(60, result, 0.0);
   }
 
   @Test
@@ -139,10 +139,10 @@ public class ComplexCalculatorTest {
     String input = "((3+2)*12)";
     
     // Act
-    int result = ComplexCalculator.preCalculate(input);
+    double result = ComplexCalculator.preCalculate(input);
     
     // Assert
-    assertEquals(60, result);
+    assertEquals(60, result, 0.0);
   }
   
   @Test
@@ -151,10 +151,10 @@ public class ComplexCalculatorTest {
     String input = "(3+(2*12))";
     
     // Act
-    int result = ComplexCalculator.preCalculate(input);
+    double result = ComplexCalculator.preCalculate(input);
     
     // Assert
-    assertEquals(27, result);
+    assertEquals(27, result, 0.0);
   }
   
   @Test
@@ -163,10 +163,10 @@ public class ComplexCalculatorTest {
 	    String input = "((3+2*12))";
 	    
 	    // Act
-	    int result = ComplexCalculator.preCalculate(input);
+	    double result = ComplexCalculator.preCalculate(input);
 	    
 	    // Assert
-	    assertEquals(27, result);
+	    assertEquals(27, result, 0.0);
 	  }
   
   @Test
@@ -175,10 +175,10 @@ public class ComplexCalculatorTest {
 	    String input = "(3+2)+(4*3)";
 	    
 	    // Act
-	    int result = ComplexCalculator.preCalculate(input);
+	    double result = ComplexCalculator.preCalculate(input);
 	    
 	    // Assert
-	    assertEquals(17, result);
+	    assertEquals(17, result, 0.0);
 	  }
   
   @Test
@@ -187,10 +187,10 @@ public class ComplexCalculatorTest {
 	    String input = "((3+2)+(4*3)+4)";
 	    
 	    // Act
-	    int result = ComplexCalculator.preCalculate(input);
+	    double result = ComplexCalculator.preCalculate(input);
 	    
 	    // Assert
-	    assertEquals(21, result);
+	    assertEquals(21, result, 0.0);
 	  }
   
   @Test
@@ -199,10 +199,10 @@ public class ComplexCalculatorTest {
 	    String input = "2^2";
 	    
 	    // Act
-	    int result = ComplexCalculator.preCalculate(input);
+	    double result = ComplexCalculator.preCalculate(input);
 	    
 	    // Assert
-	    assertEquals(4, result);
+	    assertEquals(4, result, 0.0);
 	  }
   
   @Test
@@ -211,10 +211,10 @@ public class ComplexCalculatorTest {
 	    String input = "2^0";
 	    
 	    // Act
-	    int result = ComplexCalculator.preCalculate(input);
+	    double result = ComplexCalculator.preCalculate(input);
 	    
 	    // Assert
-	    assertEquals(1, result);
+	    assertEquals(1, result, 0.0);
 	  }
   
   @Test
@@ -223,10 +223,10 @@ public class ComplexCalculatorTest {
 	    String input = "2^2^2";
 	    
 	    // Act
-	    int result = ComplexCalculator.preCalculate(input);
+	    double result = ComplexCalculator.preCalculate(input);
 	    
 	    // Assert
-	    assertEquals(16, result);
+	    assertEquals(16, result, 0.0);
 	  }
   
   @Test
@@ -235,10 +235,10 @@ public class ComplexCalculatorTest {
 	    String input = "2^2^2^2";
 	    
 	    // Act
-	    int result = ComplexCalculator.preCalculate(input);
+	    double result = ComplexCalculator.preCalculate(input);
 	    
 	    // Assert
-	    assertEquals(256, result);
+	    assertEquals(256, result, 0.0);
 	  }
   
   @Test
@@ -247,10 +247,10 @@ public class ComplexCalculatorTest {
 	    String input = "2^2^2^2^2";
 	    
 	    // Act
-	    int result = ComplexCalculator.preCalculate(input);
+	    double result = ComplexCalculator.preCalculate(input);
 	    
 	    // Assert
-	    assertEquals(65_536, result);
+	    assertEquals(65_536, result, 0.0);
 	  }
   
 }
