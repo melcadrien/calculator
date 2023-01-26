@@ -86,6 +86,30 @@ public class ComplexCalculatorTest {
   }
 
   @Test
+  public void preCalculate_Single_MultiplicationOperator_FloatValue() {
+    // Arrange
+    String input = "12.1*2";
+    
+    // Act
+    double result = ComplexCalculator.preCalculate(input);
+    
+    // Assert
+    assertEquals(24.2, result, 0.0);
+  }
+  
+  @Test
+  public void preCalculate_Single_MultiplicationOperator_LargeFloatValue() {
+    // Arrange
+    String input = "12.0000001*4";
+    
+    // Act
+    double result = ComplexCalculator.preCalculate(input);
+    
+    // Assert
+    assertEquals(48.0000004, result, 0.0);
+  }
+  
+  @Test
   public void preCalculate_Multiple_MultiplicationOperators() {
     // Arrange
     String input = "12*2*3";
