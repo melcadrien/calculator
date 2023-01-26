@@ -30,18 +30,6 @@ public class ComplexCalculator {
 			return this.operator;
 		}
 	}
-
-
-	public static void main(String[] args) {
-		Scanner userInput = new Scanner(System.in);
-
-		System.out.println("Insert two numbers and an operation, without space, in between:");
-		String toCalculate = userInput.nextLine();
-		System.out.println(preCalculate(toCalculate));
-
-		userInput.close();
-	}
-
 	
 // Redundant code left for nostalgia.	
 //	private static int calculateByInput(String[] values, Operator[] operators) {
@@ -66,56 +54,6 @@ public class ComplexCalculator {
 //		return totalValue;
 //	}
 
-	private static double calculateByOperationOrder(ArrayList<Double> values, ArrayList<Operator> operators) {
-		double totalValue = values.get(0);
-		//NOTES: Okay, so I need to do some fixing in the exponent method.  For some reason it's eating one of the numbers.
-		ArrayList<Double> newValues = new ArrayList<Double>();
-		ArrayList<Operator> newOperators = new ArrayList<Operator>();
-
-		//For Multiply and Divide
-		//Results are added into ArrayList to make it easier to add in values to be used for addition/subtraction
-		for(int pos = 1; pos < values.size(); pos++) {
-			while(operators.get(pos-1) != Operator.PLUS && operators.get(pos-1) != Operator.MINUS) {
-				switch(operators.get(pos-1)){
-				case MULTIPLY:
-					totalValue *= values.get(pos);
-					break;
-				case DIVIDE:
-					totalValue /= values.get(pos);
-					break;
-				}
-				pos++;
-				if(pos == values.size())
-					break;
-			}
-			newValues.add(totalValue);
-			if(pos != values.size()) {
-				newOperators.add(operators.get(pos-1));
-				totalValue = values.get(pos);
-			}
-			if(pos == values.size()-1 && (operators.get(pos-1) == Operator.PLUS || operators.get(pos-1) == Operator.MINUS)){
-				newValues.add(totalValue);
-			}
-		}
-
-		//For Addition and Subtraction
-		if(newValues.size() >= 1) {
-			totalValue = newValues.get(0);
-			for(int pos = 1; pos < newValues.size(); pos++) {
-				switch(newOperators.get(pos-1)){
-				case PLUS:
-					totalValue += newValues.get(pos);
-					break;
-				case MINUS:
-					totalValue -= newValues.get(pos);
-					break;
-				}
-			}
-
-		}
-		return totalValue;
-	}
-
 	//Gets the values using the operators as a separator.
 	private static String[] createValues(String input) {
 		return input.split("\\s*[\\+\\-\\/\\*\\^]\\s*");
@@ -126,7 +64,6 @@ public class ComplexCalculator {
 		//Creates an initial whitespace, which has to be removed.
 		//Maybe some sort of array that has a queue?
 		
-		//Problem is making sure it takes operators and not decimals.
 		String[] initialOperators = input.split("\\s*\\d+\\s*");
 		String[] OperatorString = new String[initialOperators.length-1];
 		System.arraycopy(initialOperators, 1, OperatorString, 0, OperatorString.length);
@@ -142,6 +79,7 @@ public class ComplexCalculator {
 				}
 			}
 		}
+		
 		return operators;
 	}
 
@@ -224,6 +162,55 @@ public class ComplexCalculator {
 
 		return calculateByOperationOrder(newValues, newOperators);
 	}
+	
+	private static double calculateByOperationOrder(ArrayList<Double> values, ArrayList<Operator> operators) {
+		double totalValue = values.get(0);
+		ArrayList<Double> newValues = new ArrayList<Double>();
+		ArrayList<Operator> newOperators = new ArrayList<Operator>();
+
+		//For Multiply and Divide
+		//Results are added into ArrayList to make it easier to add in values to be used for addition/subtraction
+		for(int pos = 1; pos < values.size(); pos++) {
+			while(operators.get(pos-1) != Operator.PLUS && operators.get(pos-1) != Operator.MINUS) {
+				switch(operators.get(pos-1)){
+				case MULTIPLY:
+					totalValue *= values.get(pos);
+					break;
+				case DIVIDE:
+					totalValue /= values.get(pos);
+					break;
+				}
+				pos++;
+				if(pos == values.size())
+					break;
+			}
+			newValues.add(totalValue);
+			if(pos != values.size()) {
+				newOperators.add(operators.get(pos-1));
+				totalValue = values.get(pos);
+			}
+			if(pos == values.size()-1 && (operators.get(pos-1) == Operator.PLUS || operators.get(pos-1) == Operator.MINUS)){
+				newValues.add(totalValue);
+			}
+		}
+
+		//For Addition and Subtraction
+		if(newValues.size() >= 1) {
+			totalValue = newValues.get(0);
+			for(int pos = 1; pos < newValues.size(); pos++) {
+				switch(newOperators.get(pos-1)){
+				case PLUS:
+					totalValue += newValues.get(pos);
+					break;
+				case MINUS:
+					totalValue -= newValues.get(pos);
+					break;
+				}
+			}
+
+		}
+		return totalValue;
+	}
 
 
 	public static double preCalculate(String input) {
@@ -247,6 +234,15 @@ public class ComplexCalculator {
 
 		return exponentFirst(values,operators);
 	}
+	
+	public static void main(String[] args) {
+		Scanner userInput = new Scanner(System.in);
 
+		System.out.println("Insert two numbers and an operation, without space, in between:");
+		String toCalculate = userInput.nextLine();
+		System.out.println(preCalculate(toCalculate));
+
+		userInput.close();
+	}
 
 }
